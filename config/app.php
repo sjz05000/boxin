@@ -152,6 +152,6 @@ return [
     ],
 
     // 本地域名
-    'url' => 'http://www.bx.com/',
+    'url' => 'http://www.boxin.com/',
 
 ];

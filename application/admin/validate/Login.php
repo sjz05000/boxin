@@ -1,6 +1,6 @@
 <?php
 
-namespace app\common\validate;
+namespace app\admin\validate;
 
 use think\Validate;
 
@@ -14,7 +14,7 @@ class Login extends Validate
      */	
 	protected $rule = [
         'username'  => 'require',
-        'pwd'    => 'require'
+        'password'    => 'require'
     ];
     
     /**
@@ -25,13 +25,13 @@ class Login extends Validate
      */	
     protected $message = [
         'username.require' => '用户名必填',
-        'pwd.require'   => '密码必填'
+        'password.require'   => '密码必填'
     ];
 
     /**
      * 验证场景
      */
     protected $scene = [
-        'dologin' => ['username', 'pwd'],
+        'login' => ['username', 'password'],
     ];
 }

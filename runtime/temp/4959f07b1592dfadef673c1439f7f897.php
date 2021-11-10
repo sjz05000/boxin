@@ -1,4 +1,4 @@
-<?php /*a:1:{s:58:"D:\app\boxin\boxin\application\admin\view\login\index.html";i:1636527257;}*/ ?>
+<?php /*a:1:{s:58:"D:\app\boxin\boxin\application\admin\view\login\index.html";i:1636531027;}*/ ?>
 <!doctype html>
 <html  class="x-admin-sm">
 <head>
@@ -24,9 +24,11 @@
         <div class="message">x-admin2.0-管理登录</div>
         <div id="darkbannerwrap"></div>
         
-        <form method="post" class="layui-form" >
+        <form method="post" class="layui-form" onsubmit="return false">
             <input name="username" placeholder="用户名"  type="text" lay-verify="required" class="layui-input" >
             <hr class="hr15">
+
+
             <input name="password" lay-verify="required" placeholder="密码"  type="password" class="layui-input">
             <hr class="hr15">
             <input value="登录" lay-submit lay-filter="login" style="width:100%;" type="submit">
@@ -44,10 +46,18 @@
               //监听提交
               form.on('submit(login)', function(data){
                 // alert(888)
-                layer.msg(JSON.stringify(data.field),function(){
-                    location.href='index.html'
-                });
-                return false;
+               
+                  var datas = data.field;
+                   $.ajax({
+                         type: "POST",
+                         url: "/admin/login/login",
+                         data: datas,
+                         dataType:"json",
+                         success: function(msg){
+                           alert(msg.msg);
+                         }
+                      });
+               
               });
             });
         })
